@@ -10,13 +10,17 @@ import requests
 from config import IST, SYMBOLS, ALERT_INTERVAL_SECONDS, MONITOR_SLEEP_SECONDS
 from model import detect
 
+import streamlit as st
+
+
+
 alert_queue = Queue()
 _FEONIX_MONITOR_ACTIVE = True
 
 
 def send_telegram_alert_sync(symbol, score):
-    token = os.getenv("TELEGRAM_TOKEN")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    token = st.secrets.get("TELEGRAM_TOKEN", "")
+    chat_id = st.secrets.get("TELEGRAM_CHAT_ID", "")
 
     print("FEONIX DEBUG TOKEN:", repr(token))
     print("FEONIX DEBUG CHAT:", repr(chat_id))
