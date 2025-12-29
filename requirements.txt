@@ -8,3 +8,6 @@ python-telegram-bot
 twilio
 requests
 python-dotenv
+nest_asyncio
+websockets
+yfinance
